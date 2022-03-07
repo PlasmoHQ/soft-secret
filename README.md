@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/plasmo-corp/gh-action-template/actions">
-    <img alt="typescript-action status" src="https://github.com/plasmo-corp/gat/actions/workflows/pr-test.yml/badge.svg">
+  <a href="https://github.com/plasmo-corp/soft-secret/actions">
+    <img alt="typescript-action status" src="https://github.com/plasmo-corp/soft-secret/actions/workflows/pr-test.yml/badge.svg">
   </a>
 </p>
 
