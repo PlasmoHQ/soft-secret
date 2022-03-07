@@ -8,6 +8,6 @@ exports[`can fetch input 1`] = `
 
 exports[`can write plain input 1`] = `
 "
-::set-output name=🍦 Secret served in%3A::P:\\\\Projects\\\\plasmo-corp\\\\soft-secret\\\\__tests__\\\\runner\\\\deep-end\\\\core\\\\key.test.ts
+::set-output name=🍦 Secret served in%3A::P:\\\\Projects\\\\plasmo-corp\\\\soft-secret\\\\__tests__\\\\runner\\\\deep-end\\\\core\\\\key.mjs
 "
 `;

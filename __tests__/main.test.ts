@@ -8,13 +8,41 @@ import { cwd, env, execPath } from "process"
 const REMOTE_TEST_HASH = "c9eRkBxua9VbAcMJ4piRc69gpRjYjJbvsd56JPvj2J"
 const indexScript = join(cwd(), "dist", "index.js")
 
-test("can write plain input", async () => {
-  const content = (env["INPUT_SECRET"] = `export const secret = "secret"`)
-  const target = (env["INPUT_TARGET"] =
-    "__tests__/runner/deep-end/core/key.test.ts")
-
+test("fail if no secret input specified", async () => {
   const options: ExecFileSyncOptions = {
-    env: process.env
+    env: {
+      ...env,
+      INPUT_TARGET: "__tests__/runner/deep-end/core/key.mjs"
+    }
+  }
+
+  const t = () => execFileSync(execPath, [indexScript], options)
+
+  expect(t).toThrowError()
+})
+
+test("fail if no target specified", async () => {
+  const options: ExecFileSyncOptions = {
+    env: {
+      ...env,
+      INPUT_SECRET: `export const secret = "secret"`
+    }
+  }
+
+  const t = () => execFileSync(execPath, [indexScript], options)
+
+  expect(t).toThrowError()
+})
+
+test("can write plain input", async () => {
+  const secret = `export const secret = "secret"`
+  const target = "__tests__/runner/deep-end/core/key.mjs"
+  const options: ExecFileSyncOptions = {
+    env: {
+      ...env,
+      INPUT_SECRET: secret,
+      INPUT_TARGET: target
+    }
   }
 
   expect(
@@ -27,20 +55,19 @@ test("can write plain input", async () => {
 
   const fileContent = await readFile(targetPath, "utf8")
 
-  expect(fileContent).toMatch(content)
+  expect(fileContent).toMatch(secret)
 })
 
 test("can fetch input", async () => {
-  env[
-    "INPUT_INPUT"
-  ] = `https://github.com/plasmo-corp/soft-secret/releases/download/test/key.json`
-  const target = (env["INPUT_OUTPUT"] =
-    "__tests__/runner/second-test/deep/path/key.json")
-
-  env["INPUT_FETCH"] = "true"
-
+  const secret = `https://github.com/plasmo-corp/soft-secret/releases/download/test/key.json`
+  const target = "__tests__/runner/second-test/deep/path/key.json"
   const options: ExecFileSyncOptions = {
-    env: process.env
+    env: {
+      ...env,
+      INPUT_INPUT: secret,
+      INPUT_OUTPUT: target,
+      INPUT_FETCH: "true"
+    }
   }
 
   expect(
