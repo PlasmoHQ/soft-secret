@@ -6,7 +6,7 @@
 
 # 🍦 Soft Secret
 
-Inject client-side tokens (public access token, anon api keys, client ids) into the build step. DO NOT inject server-side keys or private secrets.
+Inject client-side tokens (public access token, anon api keys, client ids) into a file for the build step. DO NOT inject server-side keys or private secrets.
 
 ## Why?
 
@@ -18,13 +18,17 @@ This action allows developer to store their configuration in a remote file, in a
 
 ## Security through obscrurity?
 
-Not the case. The client-side tokens mentioned here were meant to be bundled into client-side code anyway. DO NOT use this action to inject private keys!
+Not the case. The client-side tokens/public keys mentioned here were meant to be bundled into the client software anyway. Examples include OAuth client ids, tracking ids, anonymous api tokens, etc...
+
+If you need to store private keys/secret and you are building a server application, use a secret store.
 
 ## Disclaimer
 
 **It is your responsibility for leaked secrets and credentials. Please audit this action closely before deploying it to production to ensure it is not tampering with your keys.**
 
 ## Usage
+
+Specify a secret, and a target path to write the secret to. The path is relative to the root of the workflow environment, which for most case would be the root of your project. You can nest it as much as needed, as any missing path will be created for you:
 
 ```yaml
 steps:
