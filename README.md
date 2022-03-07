@@ -10,6 +10,8 @@ Inject client-side tokens (public access token, anon api keys, client ids) into 
 
 ## Disclaimer
 
+**It is your responsibility for leaked secrets and credentials. Please audit this action closely before deploying it to production to ensure it is not tampering with your keys.**
+
 ## Usage
 
 ```yaml
