@@ -1,6 +1,10 @@
 name: "Soft Secret"
 description: "🍦Write client ids and keys from github secret, api fetch, or plain text into a file for build actions."
 author: "Plasmo Corp."
+branding:
+  icon: cloud-lightning
+  color: orange
+
 inputs:
   secret:
     description: "The content of the secret, i.e ${{ secrets.CLIENT_ID_FILE }}."
