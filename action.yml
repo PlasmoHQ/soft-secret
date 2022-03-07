@@ -7,7 +7,7 @@ branding:
 
 inputs:
   secret:
-    description: "The content of the secret, i.e ${{ secrets.CLIENT_ID_FILE }}."
+    description: "The content of the secret, could be github secret itself."
     required: true
   content:
     description: "Alias of secret."
