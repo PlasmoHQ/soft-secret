@@ -37,4 +37,4 @@ See [action.yml](./action.yml) for more details about arguments and their aliase
 
 # License
 
-[MIT](./license) 🚀 [Plasmo Corp.](https://plasmo.com)
+[MIT](./license) ⭐ [Plasmo Corp.](https://plasmo.com)
