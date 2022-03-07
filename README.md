@@ -4,20 +4,35 @@
   </a>
 </p>
 
-# Plasmo Github Action Template
+# 🍦 Soft Secret
 
-Use this template to bootstrap new github action.
+Inject client-side tokens (public access token, anon api keys, client ids) into the build step. DO NOT inject server-side keys or private secrets.
+
+## Disclaimer
 
 ## Usage
 
 ```yaml
 steps:
-  - uses: plasmo-corp/gh-action-template@v1
+  - uses: plasmo-corp/soft-secret@v1
     with:
-      milliseconds: "2000"
+      secret: ${{ secrets.TEST }}
+      target: "core/test/key.ts"
 ```
 
-## CI guideline
+You can also host the keys in a publicly accessible location, and specify a `fetch` argument. This will let the action know to treat secret as an url, and fetch it:
 
-1. When PR from a feature branch to `main`, the [deploy-staging](./.github/workflows/deploy-staging.yml) workflow will be triggered: It deploy the compiled action to the `staging` branch and run test on it.
-2. When pushed to `main` branch, the [deploy-v](./.github/workflows/deploy-v.yml) workflow will be triggered: It force push staging into v\* branch (configured via the action's environment variable), and ensure the integrity of the deployment after force push.
+```yaml
+steps:
+  - uses: plasmo-corp/soft-secret@v1
+    with:
+      secret: https://github.com/plasmo-corp/soft-secret/releases/download/test/key.json
+      target: "deep/path/key.json"
+      fetch: "true"
+```
+
+See [action.yml](./action.yml) for more details about arguments and their aliases.
+
+# License
+
+[MIT](./license) 🚀 [Plasmo Corp.](https://plasmo.com)

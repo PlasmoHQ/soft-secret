@@ -47,3 +47,10 @@ jobs:
         with:
           secret: ${{ secrets.TEST }}
           target: "core/test/key.ts"
+      - run: cat core/test/key.ts
+      - uses: ./
+        with:
+          secret: https://github.com/plasmo-corp/soft-secret/releases/download/test/key.json
+          target: "core/key.json"
+          fetch: true
+      - run: cat core/key.json
