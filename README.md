@@ -6,7 +6,7 @@
 
 # 🍦 Soft Secret
 
-Inject client-side tokens (public access token, anon api keys, client ids) into a file for the build step. DO NOT inject server-side keys or private secrets.
+Inject client-side tokens (public access token, anon api keys, client ids) into a file for the build step. **DO NOT use with server-side keys or private secrets.**
 
 ## Why?
 
