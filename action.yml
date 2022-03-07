@@ -1,11 +1,31 @@
-name: "Plasmo Github Action Template"
-description: "Straight forward template minus the overhead."
+name: "Soft Secret"
+description: "🍦Write client ids and keys from github secret, api fetch, or plain text into a file for build actions."
 author: "Plasmo Corp."
 inputs:
-  milliseconds: # change this
+  secret:
+    description: "The content of the secret, i.e ${{ secrets.CLIENT_ID_FILE }}."
     required: true
-    description: "input description here"
-    default: "3000"
+  content:
+    description: "Alias of secret."
+    required: false
+  input:
+    description: "Alias of secret."
+    required: false
+
+  fetch:
+    description: "Whether the secret need to be fetched."
+    required: false
+  is-url:
+    description: "Alias of fetch."
+    required: false
+
+  target:
+    description: "Relative path to the target file to write secret to."
+    required: true
+  output:
+    description: "Alias of target."
+    required: false
+
 runs:
   using: "node16"
   main: "index.js"
