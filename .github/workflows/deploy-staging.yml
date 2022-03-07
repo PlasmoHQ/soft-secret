@@ -45,4 +45,5 @@ jobs:
           ref: staging
       - uses: ./
         with:
-          milliseconds: "1000"
+          secret: ${{ secrets.TEST }}
+          target: "core/test/key.ts"

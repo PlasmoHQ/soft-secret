@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can fetch input 1`] = `
+"
+::set-output name=🍦 Secret served in%3A::P:\\\\Projects\\\\plasmo-corp\\\\soft-secret\\\\__tests__\\\\runner\\\\second-test\\\\deep\\\\path\\\\key.json
+"
+`;
+
+exports[`can write plain input 1`] = `
+"
+::set-output name=🍦 Secret served in%3A::P:\\\\Projects\\\\plasmo-corp\\\\soft-secret\\\\__tests__\\\\runner\\\\deep-end\\\\core\\\\key.test.ts
+"
+`;

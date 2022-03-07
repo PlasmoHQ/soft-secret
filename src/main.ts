@@ -1,17 +1,47 @@
-import { debug, getInput, setFailed, setOutput } from "@actions/core"
-
-import { wait } from "./wait"
+import { getInput, setFailed, setOutput } from "@actions/core"
+import { createWriteStream } from "fs"
+import { ensureDir } from "fs-extra"
+import got from "got"
+import { dirname, resolve } from "path"
+import { cwd, env } from "process"
 
 async function run(): Promise<void> {
   try {
-    const ms: string = getInput("milliseconds")
-    debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const secretData =
+      getInput("input") ||
+      getInput("content") ||
+      getInput("secret", {
+        required: true
+      })
 
-    debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    debug(new Date().toTimeString())
+    const target = getInput("output") || getInput("target", { required: true })
 
-    setOutput("time", new Date().toTimeString())
+    const needToFetch = !!(getInput("is-url") || getInput("fetch"))
+
+    const targetPath = resolve(cwd(), target)
+
+    const targetDir = dirname(targetPath)
+
+    if (env.NODE_PROCESS === "test") {
+      console.log({
+        secretData,
+        target,
+        needToFetch
+      })
+    }
+
+    const [content] = await Promise.all([
+      needToFetch ? await got(secretData).text() : secretData,
+      await ensureDir(targetDir)
+    ])
+
+    const fileStream = createWriteStream(targetPath)
+
+    fileStream.write(content)
+
+    fileStream.end()
+
+    setOutput("🍦 Secret served in:", targetPath)
   } catch (error) {
     if (error instanceof Error) setFailed(error.message)
   }
