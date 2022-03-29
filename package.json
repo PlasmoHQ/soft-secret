@@ -1,6 +1,6 @@
 {
   "name": "@plasmo-corp/soft-secret",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Inject github secret as client ID and public API Keys at build steps",
   "scripts": {
