@@ -15,7 +15,7 @@ specifiers:
   eslint-plugin-jest: 26.1.1
   eslint-plugin-prettier: 4.0.0
   fs-extra: 10.0.1
-  got: 12.0.1
+  got: 12.0.3
   jest: 27.5.1
   js-yaml: 4.1.0
   prettier: 2.5.1
@@ -25,7 +25,7 @@ specifiers:
 dependencies:
   '@actions/core': 1.6.0
   fs-extra: 10.0.1
-  got: 12.0.1
+  got: 12.0.3
 
 devDependencies:
   '@jest/globals': 27.5.1
@@ -2233,8 +2233,8 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /got/12.0.1:
-    resolution: {integrity: sha512-1Zhoh+lDej3t7Ks1BP/Jufn+rNqdiHQgUOcTxHzg2Dao1LQfp5S4Iq0T3iBxN4Zdo7QqCJL+WJUNzDX6rCP2Ew==}
+  /got/12.0.3:
+    resolution: {integrity: sha512-hmdcXi/S0gcAtDg4P8j/rM7+j3o1Aq6bXhjxkDhRY2ipe7PHpvx/14DgTY2czHOLaGeU8VRvRecidwfu9qdFug==}
     engines: {node: '>=14.16'}
     dependencies:
       '@sindresorhus/is': 4.6.0
