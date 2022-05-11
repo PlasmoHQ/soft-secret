@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/plasmo-corp/soft-secret/actions">
-    <img alt="typescript-action status" src="https://github.com/plasmo-corp/soft-secret/actions/workflows/deploy-v.yml/badge.svg">
+  <a href="https://github.com/PlasmoHQ/soft-secret/actions">
+    <img alt="typescript-action status" src="https://github.com/PlasmoHQ/soft-secret/actions/workflows/deploy-v.yml/badge.svg">
   </a>
 </p>
 
@@ -32,7 +32,7 @@ Specify a secret, and a target path to write the secret to. The path is relative
 
 ```yaml
 steps:
-  - uses: plasmo-corp/soft-secret@v1
+  - uses: PlasmoHQ/soft-secret@v1
     with:
       secret: ${{ secrets.TEST }}
       target: "core/test/key.ts"
@@ -42,9 +42,9 @@ You can also host the keys in a publicly accessible location, and specify a `fet
 
 ```yaml
 steps:
-  - uses: plasmo-corp/soft-secret@v1
+  - uses: PlasmoHQ/soft-secret@v1
     with:
-      secret: https://github.com/plasmo-corp/soft-secret/releases/download/test/key.json
+      secret: https://github.com/PlasmoHQ/soft-secret/releases/download/test/key.json
       target: "deep/path/key.json"
       fetch: "true"
 ```
